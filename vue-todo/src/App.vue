@@ -1,29 +1,34 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div>
+    <h1>Vue Todo with Typescript</h1>
+    <TodoInput :item="todoText" @input="updateTodoText" @add="addTodoItem" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import TodoInput from "./components/TodoInput.vue";
 
 export default Vue.extend({
-  name: "App",
-  components: {
-    HelloWorld,
+  components: { TodoInput },
+  data() {
+    return {
+      todoText: "",
+    };
+  },
+  methods: {
+    updateTodoText(value: string) {
+      this.todoText = value;
+    },
+    addTodoItem() {
+      localStorage.setItem(this.todoText, this.todoText);
+      this.initTodoText();
+    },
+    initTodoText() {
+      this.todoText = "";
+    },
   },
 });
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<style scoped></style>
