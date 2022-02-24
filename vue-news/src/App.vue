@@ -13,6 +13,7 @@ import Vue from "vue";
 import ToolBar from "./components/ToolBar.vue";
 import Spinner from "./components/Spinner.vue";
 import bus from "./utils/bus";
+import { MutationTypes } from "./store/mutations";
 
 export default Vue.extend({
   components: {
@@ -32,7 +33,7 @@ export default Vue.extend({
       this.loading = false;
     },
   },
-  created() {
+  async created() {
     bus.$on("on:progress", this.onProgress);
     bus.$on("off:progress", this.offProgress);
   },
