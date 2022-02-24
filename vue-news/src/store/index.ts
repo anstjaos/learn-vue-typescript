@@ -3,7 +3,7 @@ import Vuex, { StoreOptions } from "vuex";
 import { state, RootState } from "./state";
 import getters from "./getters.js";
 import { mutations } from "./mutations";
-import actions from "./actions.js";
+import { actions } from "./actions";
 
 Vue.use(Vuex);
 
